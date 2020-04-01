@@ -1,5 +1,7 @@
 # Sample connexion project
 
+[![Build Status](https://travis-ci.org/scoulomb/zalando_connexion_sample.svg?branch=master)](https://travis-ci.org/scoulomb/zalando_connexion_sample)
+
 Initially created to open [Zalando Connexion Issue 1202](https://github.com/zalando/connexion/issues/1202) on `Content-Type` header issue.
 
 Issue also described in curl.sh
