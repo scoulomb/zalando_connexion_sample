@@ -26,15 +26,15 @@ Step 9/12 : COPY sample_code sample_code
  ---> f1a3ef9babf4
 Step 10/12 : COPY documentation/openapi documentation/openapi
  ---> Using cache
- ---> 447e27364832
+ ---> 598d7b69a274
 Step 11/12 : ENTRYPOINT ["pipenv", "run", "python", "run.py", "api"]
  ---> Using cache
- ---> 8c8fde5f7917
+ ---> 08a96a804485
 Step 12/12 : EXPOSE 8080/tcp
  ---> Using cache
- ---> cd4da2ff02da
+ ---> eb56d657eba3
 
-Successfully built cd4da2ff02da
+Successfully built eb56d657eba3
 Successfully tagged server:latest
 Step 1/6 : FROM ubuntu
  ---> ccc6e87d482b
@@ -45,16 +45,17 @@ Step 3/6 : WORKDIR /working_dir
  ---> Using cache
  ---> e3421fd80c40
 Step 4/6 : COPY curl.sh curl.sh
- ---> Using cache
- ---> 37e98b53a97f
+ ---> 5a7abea3d20d
 Step 5/6 : RUN chmod 777 curl.sh
- ---> Using cache
- ---> 4f4421bc7d9a
+ ---> Running in ae6bcc7f1a5d
+Removing intermediate container ae6bcc7f1a5d
+ ---> be87ea76f7fb
 Step 6/6 : ENTRYPOINT ["sh", "./curl.sh"]
- ---> Using cache
- ---> e1c2772664a0
+ ---> Running in 00c6aa770bdf
+Removing intermediate container 00c6aa770bdf
+ ---> 5050b3859c87
 
-Successfully built e1c2772664a0
+Successfully built 5050b3859c87
 Successfully tagged curl:latest
 Attaching to zalando_connexion_sample_server_1, zalando_connexion_sample_curl_1
 [36mcurl_1    |[0m + sleep 5
@@ -64,16 +65,16 @@ Attaching to zalando_connexion_sample_server_1, zalando_connexion_sample_curl_1
 [33mserver_1  |[0m    Use a production WSGI server instead.
 [33mserver_1  |[0m  * Debug mode: off
 [33mserver_1  |[0m  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
-[36mcurl_1    |[0m + printf Nominal working case\n-----\n
-[36mcurl_1    |[0m + curl --request POST --header Content-Type: application/json http://server:8080/api/v1/test/entry --data {"kind" : "time"}
 [36mcurl_1    |[0m Nominal working case
 [36mcurl_1    |[0m -----
+[36mcurl_1    |[0m + printf Nominal working case\n-----\n
+[36mcurl_1    |[0m + curl --request POST --header Content-Type: application/json http://server:8080/api/v1/test/entry --data {"kind" : "time"}
 [36mcurl_1    |[0m   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 [36mcurl_1    |[0m                                  Dload  Upload   Total   Spent    Left  Speed
-[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 11:18:49] "[37mPOST /api/v1/test/entry HTTP/1.1[0m" 200 -
-[36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    49  100    32  100    17   2461   1307 --:--:-- --:--:-- --:--:--  4083
+[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 15:36:47] "[37mPOST /api/v1/test/entry HTTP/1.1[0m" 200 -
+[36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    49  100    32  100    17   2133   1133 --:--:-- --:--:-- --:--:--  3266
 [36mcurl_1    |[0m {
-[36mcurl_1    |[0m   "theResponse": "11:18:49"
+[36mcurl_1    |[0m   "theResponse": "15:36:47"
 [36mcurl_1    |[0m }
 [36mcurl_1    |[0m Nominal error case with unsupported media type - 415 is returned
 [36mcurl_1    |[0m -----
@@ -81,37 +82,37 @@ Attaching to zalando_connexion_sample_server_1, zalando_connexion_sample_curl_1
 [36mcurl_1    |[0m + curl --request POST --header Content-Type: application/xml http://server:8080/api/v1/test/entry --data {"kind" : "time"}
 [36mcurl_1    |[0m   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 [36mcurl_1    |[0m                                  Dload  Upload   Total   Spent    Left  Speed
-[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 11:18:49] "[31m[1mPOST /api/v1/test/entry HTTP/1.1[0m" 415 -
+[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 15:36:47] "[31m[1mPOST /api/v1/test/entry HTTP/1.1[0m" 415 -
 [36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   201  100   184  100    17  20444   1888 --:--:-- --:--:-- --:--:-- 22333
 [36mcurl_1    |[0m {"errors":["UnsupportedMediaTypeProblem('Invalid Content-type (application/xml), expected JSON data')",null,"Invalid Content-type (application/xml), expected JSON data"],"status":415}
-[36mcurl_1    |[0m + printf (1) Tolerance to allow Content-Type: application/json; charset=utf-8 [EVEN IF NOT DEFINED IN OPENAPI?]\n-----\n
-[36mcurl_1    |[0m + curl --request POST --header Content-Type: application/json; charset=utf-8 http://server:8080/api/v1/test/entry --data {"kind" : "time"}
-[36mcurl_1    |[0m (1) Tolerance to allow Content-Type: application/json; charset=utf-8 [EVEN IF NOT DEFINED IN OPENAPI?]
+[36mcurl_1    |[0m (case 1) Tolerance to allow Content-Type: application/json; charset=utf-8 [EVEN IF NOT DEFINED IN OPENAPI?]
 [36mcurl_1    |[0m -----
+[36mcurl_1    |[0m + printf (case 1) Tolerance to allow Content-Type: application/json; charset=utf-8 [EVEN IF NOT DEFINED IN OPENAPI?]\n-----\n
+[36mcurl_1    |[0m + curl --request POST --header Content-Type: application/json; charset=utf-8 http://server:8080/api/v1/test/entry --data {"kind" : "time"}
 [36mcurl_1    |[0m   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 [36mcurl_1    |[0m                                  Dload  Upload   Total   Spent    Left  Speed
-[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 11:18:49] "[37mPOST /api/v1/test/entry HTTP/1.1[0m" 200 -
+[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 15:36:47] "[37mPOST /api/v1/test/entry HTTP/1.1[0m" 200 -
 [36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    49  100    32  100    17   3555   1888 --:--:-- --:--:-- --:--:--  5444
 [36mcurl_1    |[0m {
-[36mcurl_1    |[0m   "theResponse": "11:18:49"
+[36mcurl_1    |[0m   "theResponse": "15:36:47"
 [36mcurl_1    |[0m }
-[36mcurl_1    |[0m (2) Invalid JSON: Content-Type: application/json is accepted [EXPECTED]
-[36mcurl_1    |[0m -----
-[36mcurl_1    |[0m + printf (2) Invalid JSON: Content-Type: application/json is accepted [EXPECTED]\n-----\n
+[36mcurl_1    |[0m + printf (case 2) Invalid JSON: Content-Type: application/json is accepted [EXPECTED]\n-----\n
 [36mcurl_1    |[0m + curl --request POST --header Content-Type: application/json http://server:8080/api/v1/test/entry --data {"kind" "time"}
-[36mcurl_1    |[0m   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-[36mcurl_1    |[0m                                  Dload  Upload   Total   Spent    Left  Speed
-[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 11:18:49] "[31m[1mPOST /api/v1/test/entry HTTP/1.1[0m" 400 -
-[36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   110  100    95  100    15  23750   3750 --:--:-- --:--:-- --:--:-- 27500
-[36mcurl_1    |[0m {"errors":["BadRequestProblem()","Request body is not valid JSON","Bad Request"],"status":400}
-[36mcurl_1    |[0m + printf (3) Invalid JSON Content-Type: application/json; charset=utf-8 is not accepted [NOT CONSISTENT WITH VALID JSON]\n-----\n
-[36mcurl_1    |[0m + curl --request POST --header Content-Type: application/json; charset=utf-8 http://server:8080/api/v1/test/entry --data {"kind" "time"}
-[36mcurl_1    |[0m (3) Invalid JSON Content-Type: application/json; charset=utf-8 is not accepted [NOT CONSISTENT WITH VALID JSON]
+[36mcurl_1    |[0m (case 2) Invalid JSON: Content-Type: application/json is accepted [EXPECTED]
 [36mcurl_1    |[0m -----
 [36mcurl_1    |[0m   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 [36mcurl_1    |[0m                                  Dload  Upload   Total   Spent    Left  Speed
-[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 11:18:49] "[31m[1mPOST /api/v1/test/entry HTTP/1.1[0m" 415 -
-[36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   231  100   216  100    15  15428   1071 --:--:-- --:--:-- --:--:-- 17769
+[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 15:36:48] "[31m[1mPOST /api/v1/test/entry HTTP/1.1[0m" 400 -
+[36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   110  100    95  100    15  11875   1875 --:--:-- --:--:-- --:--:-- 13750
+[36mcurl_1    |[0m {"errors":["BadRequestProblem()","Request body is not valid JSON","Bad Request"],"status":400}
+[36mcurl_1    |[0m + printf (case 3) Invalid JSON Content-Type: application/json; charset=utf-8 is not accepted [NOT CONSISTENT WITH VALID JSON]\n-----\n
+[36mcurl_1    |[0m + curl --request POST --header Content-Type: application/json; charset=utf-8 http://server:8080/api/v1/test/entry --data {"kind" "time"}
+[36mcurl_1    |[0m (case 3) Invalid JSON Content-Type: application/json; charset=utf-8 is not accepted [NOT CONSISTENT WITH VALID JSON]
+[36mcurl_1    |[0m -----
+[36mcurl_1    |[0m   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+[36mcurl_1    |[0m                                  Dload  Upload   Total   Spent    Left  Speed
+[33mserver_1  |[0m 172.23.0.3 - - [01/Apr/2020 15:36:48] "[31m[1mPOST /api/v1/test/entry HTTP/1.1[0m" 415 -
+[36mcurl_1    |[0m   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   231  100   216  100    15  24000   1666 --:--:-- --:--:-- --:--:-- 28875
 [36mcurl_1    |[0m {"errors":["UnsupportedMediaTypeProblem('Invalid Content-type (application/json; charset=utf-8), expected JSON data')",null,"Invalid Content-type (application/json; charset=utf-8), expected JSON data"],"status":415}
 [36mzalando_connexion_sample_curl_1 exited with code 0
 [0mGracefully stopping... (press Ctrl+C again to force)
