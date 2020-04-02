@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-connexion = "==2.6.0"
+connexion = {editable=true, path = "connexion"}
 
 [requires]
 python_version = "3.8"

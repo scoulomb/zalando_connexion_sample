@@ -1,0 +1,13 @@
+curl_1    | + printf (case 3) Invalid JSON Content-Type: application/json; charset=utf-8 is not accepted [NOT CONSISTENT WITH VALID JSON]\n-----\n
+curl_1    | + curl --request POST --header Content-Type: application/json; charset=utf-8 http://server:8080/api/v1/test/entry --data {"kind" "time"}
+curl_1    |   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+curl_1    |                                  Dload  Upload   Total   Spent    Left  Speed
+server_1  | 172.19.0.3 - - [02/Apr/2020 22:02:25] "POST /api/v1/test/entry HTTP/1.1" 400 -
+100   110  100    95  100    15  13736   2168 --:--:-- --:--:-- --:--:-- 15833
+curl_1    | {"errors":["BadRequestProblem()","Request body is not valid JSON","Bad Request"],"status":400}
+zalando_connexion_sample_curl_1 exited with code 0
+
+
+Instead of curl_1    | {"errors":["UnsupportedMediaTypeProblem('Invalid Content-type (application/json; charset=utf-8), expected JSON data')",null,"Invalid Content-type (application/json; charset=utf-8), expected JSON data"],"status":415}
+
+as shown here: https://travis-ci.org/github/scoulomb/zalando_connexion_sample

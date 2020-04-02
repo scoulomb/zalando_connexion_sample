@@ -1,5 +1,7 @@
 FROM python:3.8-slim
 
+USER root
+
 WORKDIR /working_dir
 
 COPY pip.conf /etc/pip.conf
@@ -8,9 +10,12 @@ RUN pip install -U pip &&\
     pip install --upgrade setuptools wheel pipenv
 
 COPY Pipfile /working_dir/
-COPY Pipfile.lock /working_dir/
+###COPY Pipfile.lock /working_dir/
+
+COPY connexion connexion
 
 # Only install needed packages, not the dev ones
+RUN pipenv lock
 RUN pipenv sync
 
 COPY *.py ./
