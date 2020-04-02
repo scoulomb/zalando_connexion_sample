@@ -1,0 +1,21 @@
+sylvain@HP:~/connexion
+$ git diff  --staged connexion/decorators/validation.py
+diff --git a/connexion/decorators/validation.py b/connexion/decorators/validation.py
+index b7c7a62..479893b 100644
+--- a/connexion/decorators/validation.py
++++ b/connexion/decorators/validation.py
+@@ -134,11 +134,13 @@ class RequestBodyValidator(object):
+         @functools.wraps(function)
+         def wrapper(request):
+             if all_json(self.consumes):
++                # request is not a valid json as empty
+                 data = request.json
+ 
+                 empty_body = not(request.body or request.form or request.files)
+                 if data is None and not empty_body and not self.is_null_value_valid:
+                     try:
++                        # issue here; is json mimetype should accept charset !!
+                         ctype_is_json = is_json_mimetype(request.headers.get("Content-Type", ""))
+                     except ValueError:
+                         ctype_is_json = False
+
