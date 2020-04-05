@@ -1,0 +1,220 @@
+_type: export
+__export_format: 4
+__export_date: 2020-04-05T19:31:48.801Z
+__export_source: insomnia.desktop.app:v7.1.1
+resources:
+  - _id: req_4410da35603f4ad2b5da357b5a50475f
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"activity": "swim",
+        	"distance": 1334344455555,
+        	"calories": 233
+
+        }
+    created: 1586113851822
+    description: ""
+    headers:
+      - id: pair_233a23118d0c4fef8e1a4c296cb28304
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1586109296258
+    method: POST
+    modified: 1586114958709
+    name: Create activity
+    parameters: []
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: localhost:8880/api/v1/test/activities
+    _type: request
+  - _id: wrk_9a72d13d192749dfa447f7f22d935173
+    created: 1584700947019
+    description: ""
+    modified: 1584700947019
+    name: Insomnia
+    parentId: null
+    _type: workspace
+  - _id: req_976bab049f8f485c8c732e88c9e2ca58
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"activity": "dance",
+        	"distance": 1334344455555,
+        	"calories": 233
+
+        }
+    created: 1586115050772
+    description: ""
+    headers:
+      - id: pair_233a23118d0c4fef8e1a4c296cb28304
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1586109296245.5
+    method: POST
+    modified: 1586115057403
+    name: Create activity - Not allowed activity
+    parameters: []
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: localhost:8880/api/v1/test/activities
+    _type: request
+  - _id: req_6c5723fb88624cd88fff8ce68a1bd1d1
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"activity": "swim",
+        	"distance": 1334344455555,
+        	"calories": 233,
+        	"coronavirus" : "cru 2019"
+
+        }
+    created: 1586114977671
+    description: ""
+    headers:
+      - id: pair_233a23118d0c4fef8e1a4c296cb28304
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1586109296233
+    method: POST
+    modified: 1586115031910
+    name: Create activity - Error
+    parameters: []
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: localhost:8880/api/v1/test/activities
+    _type: request
+  - _id: req_ddf5149ea98041cc8574cbcb891851c5
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"activity": "swim",
+        	"distance": 1334344455555
+
+        }
+    created: 1586114891336
+    description: ""
+    headers:
+      - id: pair_233a23118d0c4fef8e1a4c296cb28304
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1586109296208
+    method: GET
+    modified: 1586114900888
+    name: List activities
+    parameters: []
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: localhost:8880/api/v1/test/activities
+    _type: request
+  - _id: req_a499bcc10bfb4955b45c4f999cee84dd
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"activity": "swim",
+        	"distance": 1334344455555
+
+        }
+    created: 1586114915347
+    description: ""
+    headers:
+      - id: pair_233a23118d0c4fef8e1a4c296cb28304
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1586109296158
+    method: GET
+    modified: 1586114919131
+    name: Get activity
+    parameters: []
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: localhost:8880/api/v1/test/activities/2
+    _type: request
+  - _id: req_c11818edde834041a94f0121551b0125
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"activity": "swim",
+        	"distance": 1334344455555
+
+        }
+    created: 1586114936406
+    description: ""
+    headers:
+      - id: pair_233a23118d0c4fef8e1a4c296cb28304
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1586109296108
+    method: GET
+    modified: 1586114942963
+    name: Get calories
+    parameters: []
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: localhost:8880/api/v1/test/calories
+    _type: request
+  - _id: env_3b97050c042e79fa3abc9c683fec4b6a5ce15a66
+    color: null
+    created: 1584700947114
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1584700947114
+    modified: 1584700947114
+    name: Base Environment
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    _type: environment
+  - _id: jar_3b97050c042e79fa3abc9c683fec4b6a5ce15a66
+    cookies: []
+    created: 1584700947119
+    modified: 1584700947119
+    name: Default Jar
+    parentId: wrk_9a72d13d192749dfa447f7f22d935173
+    _type: cookie_jar

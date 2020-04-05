@@ -6,24 +6,53 @@ info:
 servers:
   - url: /api/v1/test
 paths:
-  /entry:
+  /activities/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Numeric ID of the activity to get
+    get:
+      operationId: sample_code.endpoints.endpoint.get_activity
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+  /activities:
+    get:
+      operationId: sample_code.endpoints.endpoint.list_activities
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
     post:
-      operationId: sample_code.endpoints.endpoint.post
+      operationId: sample_code.endpoints.endpoint.post_activity
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                kind:
-                  type: string
-                  description: 'Request current time or date'
-                  enum:
-                    - time
-                    - date
-              required:
-                - kind
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+  /calories:
+    get:
+      operationId: sample_code.endpoints.endpoint.compute_calories
       responses:
         '201':
           description: Created
@@ -32,6 +61,28 @@ paths:
               schema:
                 type: object
                 properties:
-                  theResponse:
-                    type: string
-
+                  calories:
+                    type: integer
+                    description: 'all calories'
+components:
+  schemas:
+    Activity:
+      type: object
+      properties:
+        distance:
+          type: integer
+          description: 'Distance performance'
+        calories:
+          type: integer
+        activity:
+          type: string
+          enum:
+            - ski
+            - run
+            - swim
+      required:
+      - activity
+      # Strict validation in server  but have to set additional properties !
+      # Because in OpenApi default value is set to true
+      # cf. https://github.com/zalando/connexion/issues/837
+      additionalProperties: false
