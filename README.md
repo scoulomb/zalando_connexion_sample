@@ -62,3 +62,5 @@ Show with Postman example
 - get activity
 - list activites
 - get calory count
+
+For a dev audience at the beginning make the parallel with pure Flask

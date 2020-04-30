@@ -11,11 +11,13 @@ def hello():
     return "Hello World!"
 
 
-@app.route("/api/v1/test/entry", methods=["POST"])
+@app.route("/api/v1/test/activities", methods=["POST"])
 def test_entry():
     body = request.get_json()
     try:
-        body["kind"]
-    except TypeError as _:
-        return {"error": "missing mandatory parameter"}, 400
+        activity = body["activity"]
+        if activity not in ["ski", "running"]:
+            return {"error": f"Activity not allowed {activity}"}, 400
+    except KeyError as _: # EAFP
+        return {"error": "missing mandatory parameter activity"}, 400
     return endpoint.post(body)
